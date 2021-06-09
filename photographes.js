@@ -171,6 +171,7 @@ trierParButtons.forEach((btn, index) => btn.addEventListener('click', () => {
     incrementLikesOnClick()
   }
   switchSelectedDropDown(index)
+  document.getElementById('drop-down-btn').click()
 }))
 
 function switchSelectedDropDown (index) {
