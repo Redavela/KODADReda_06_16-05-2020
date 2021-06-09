@@ -1,0 +1,19 @@
+{
+  "name": "p6_kodad_reda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.32.13"
+  },
+  "devDependencies": {
+    "eslint": "^7.26.0",
+    "eslint-loader": "^4.0.2",
+    "standard": "^16.0.3"
+  }
+}

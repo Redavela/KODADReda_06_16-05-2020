@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="photographes.css">
+    <link rel="icon" type="image/png" href="./Photos/Favicon.png"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap">
+    <title>FishEye</title>
+</head>
+<body>
+
+<!-- LE HEADER -->
+<header>
+
+<h1><a href="acceuil.html" ><img src="./Photos/LOGO-fisheye.jpg"  width="210" height="60" alt="LOGO"></a></h1>
+</header>
+
+<main>
+    
+<!-- PROFIL DU PHOTOGRAPHE -->
+<div id="photographer-container"></div> 
+    
+<!-- LE DROPDOWN POUR LE TRI  -->
+<span class="trier-par-txt">Trier par</span>
+<div class="dropdown">
+    <i class="fas fa-chevron-down" id="drop-down-btn"></i>
+    <button  class="dropbtn trierBtn">Popularité</button>
+    <!-- <i class="fas fa-chevron-up fa-chevron-up-NO" id="close-up-icon"></i> -->
+    <div id="myDropdown" class="dropdown-content">
+        <a href="#" class="trierBtn">Date</a>
+        <a href="#" class="trierBtn">Titre</a>
+    </div>
+</div>
+    
+<!-- UNE DIV POUR AFFICHER LE TRAVAIL DU PHOTOGRAPHE -->
+<div id="photographer-work"></div>
+    
+<!-- IMAGE LIGHTBOX -->
+<div id="lightBoxContainer">
+<div id="lightBoxBody">
+    <i class="fas fa-times closeIcon"></i>
+    <i class="fas fa-chevron-left leftIcon"></i>
+    <i class="fas fa-chevron-right rightIcon"></i>
+    <div id="photoPlaceHolder"></div>
+    <div id="photoName">Photo Name here</div>
+</div>
+</div>
+
+<!-- UNE DIV POUR LES PRIX ET LES LIKES -->
+<div id="likes-and-price-box"></div>
+    
+<!-- LE FORMULAIRE DE CONTACT -->
+<div id="form-container">
+    <div class="form-container">
+        <h1>Contactez-moi<br></h1>
+        <p id="nameOfThePhotopgraphe"></p>
+        <form>
+            <p id="X-button"><i class="fas fa-times"></i></p>
+            <label>Prénom</label><br>
+            <input id="prenom" type="text"><br>
+            <p class="error" id="error-prenom"></p>
+            <label>Nom</label><br>
+            <input id="nom" type="text"><br>
+            <p class="error" id="error-nom"></p>
+            <label>Email</label><br>
+            <input id="email" type="text"><br>
+            <p class="error" id="error-email"></p>
+            <label>Votre Message</label><br>
+            <input id="message" type="text" class="votre-message-box"><br>
+            <p class="error" id="error-message"></p>
+            <button>Envoyer</button>
+        </form>
+    </div>
+</div>
+
+</main>
+    
+    <script src="photographes.js"></script>
+</body>
+</html>
