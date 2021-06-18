@@ -82,6 +82,10 @@ function photographerWork (media) {
         lightBox.pushCurrentPic(element.image)
         lightBox.pushPhotoName(element.photoName)
       }
+      if ('video' in element) {
+        lightBox.pushCurrentPic(element.video)
+        lightBox.pushPhotoName(element.photoName)
+      }
       likesTable.push(element.likes)
     }
   })
@@ -93,7 +97,7 @@ function videoOrImage (image, video, element) {
   if ('image' in element) {
     return ` <img class="photos" aria-label="photo ${element.photoName}" src="${image}">`
   } else if ('video' in element) {
-    return ` <iframe src="${video}" width="285px" height="255px" controls=0></iframe>`
+    return ` <iframe class="photos" src="${video}" width="285px" height="255px" controls=0></iframe>`
   }
 }
 
@@ -214,8 +218,6 @@ function switchSelectedDropDown (index) {
   selected.innerText = firstText
 }
 // PARTIE LIGHTBOX -------------------------------------------
-
-// CHANGER LES PHOTOS -----------------------
 
 // FERMER LA LIGHTBOX -----------------------------
 
