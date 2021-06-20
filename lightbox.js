@@ -9,7 +9,7 @@ const LightBox = class {
     const getPhotos = Array.from(document.getElementsByClassName('photos'))
     getPhotos.forEach((photo, index) =>
       photo.addEventListener('click', () => {
-        this.open(index) 
+        this.open(index)
       })
     )
   }
@@ -38,51 +38,77 @@ const LightBox = class {
     const photoPlaceHolder = document.getElementById('photoPlaceHolder')
     const lightBoxcontainer = document.getElementById('lightBoxContainer')
     const photoNaneDom = document.getElementById('photoName')
-    const src = this.currentPhotographerPhotos[index]
-    const nameSrc = this.photoName[index]
+    let src = this.currentPhotographerPhotos[index]
+    let nameSrc = this.photoName[index]
     lightBoxcontainer.style.display = 'block'
     this.currentLigthboxIndex = index
 
     photoPlaceHolder.innerHTML = this.generateHtml(src)
+    photoNaneDom.innerHTML = `${nameSrc}`
+
+    document.onkeydown = (e) => {
+      switch (e.keyCode) {
+        case 27:
+          const closeLightBoxBtn = document.querySelector('.closeIcon')
+          closeLightBoxBtn.click()
+        case 37: // left
+          this.prevPic()
+          break
+
+        case 39: // right
+          this.nextPic()
+          break
+
+        default:
+          return // exit this handler for other keys
+      }
+      e.preventDefault() // bloque l'action par defaut (scroll / move caret)
+    }
+  }
+
+  prevPic () {
+    const photoPlaceHolder = document.getElementById('photoPlaceHolder')
+    const photoNaneDom = document.getElementById('photoName')
+    this.currentLigthboxIndex -= 1
+    if (this.currentLigthboxIndex < 0) {
+      this.currentLigthboxIndex = this.currentPhotographerPhotos.length - 1
+    }
+    const src = this.currentPhotographerPhotos[this.currentLigthboxIndex]
+    photoPlaceHolder.innerHTML = this.generateHtml(src)
+
+    if (this.currentLigthboxIndex < 0) {
+      this.currentLigthboxIndex = this.photoName.length - 1
+    }
+    const nameSrc = this.photoName[this.currentLigthboxIndex]
+    photoNaneDom.innerHTML = `${nameSrc}`
+  }
+
+  nextPic () {
+    const photoPlaceHolder = document.getElementById('photoPlaceHolder')
+    const photoNaneDom = document.getElementById('photoName')
+    this.currentLigthboxIndex += 1
+    if (this.currentLigthboxIndex > this.currentPhotographerPhotos.length - 1) {
+      this.currentLigthboxIndex = 0
+    }
+    const src = this.currentPhotographerPhotos[this.currentLigthboxIndex]
+    photoPlaceHolder.innerHTML = this.generateHtml(src)
+
+    if (this.currentLigthboxIndex > this.photoName.length - 1) {
+      this.currentLigthboxIndex = 0
+    }
+    const nameSrc = this.photoName[this.currentLigthboxIndex]
     photoNaneDom.innerHTML = `${nameSrc}`
   }
 
   handleNextPrevButtons () { // fonction pour utiliser les flèches de la lightBox
     const previousBtn = document.querySelector('.leftIcon')
     const nextBtn = document.querySelector('.rightIcon')
-    const photoPlaceHolder = document.getElementById('photoPlaceHolder')
-    const photoNaneDom = document.getElementById('photoName')
 
-    previousBtn.addEventListener('click', () => { // flèche pour revenir
-      this.currentLigthboxIndex -= 1
-      if (this.currentLigthboxIndex < 0) {
-        this.currentLigthboxIndex = this.currentPhotographerPhotos.length - 1
-      }
-      const src = this.currentPhotographerPhotos[this.currentLigthboxIndex]
-      photoPlaceHolder.innerHTML = this.generateHtml(src)
-
-      if (this.currentLigthboxIndex < 0) {
-        this.currentLigthboxIndex = this.photoName.length - 1
-      }
-      const nameSrc = this.photoName[this.currentLigthboxIndex]
-      photoNaneDom.innerHTML = `${nameSrc}`
+    previousBtn.addEventListener('click', () => {
+      this.prevPic()
     })
-
-    nextBtn.addEventListener('click', () => { // flèche pour avancer
-      this.currentLigthboxIndex += 1
-      if (
-        this.currentLigthboxIndex >
-          this.currentPhotographerPhotos.length - 1
-      ) {
-        this.currentLigthboxIndex = 0
-      }
-      const src = this.currentPhotographerPhotos[this.currentLigthboxIndex]
-      photoPlaceHolder.innerHTML = this.generateHtml(src)
-      if (this.currentLigthboxIndex > this.photoName.length - 1) {
-        this.currentLigthboxIndex = 0
-      }
-      const nameSrc = this.photoName[this.currentLigthboxIndex]
-      photoNaneDom.innerHTML = `${nameSrc}`
+    nextBtn.addEventListener('click', () => {
+      this.nextPic()
     })
   }
 
