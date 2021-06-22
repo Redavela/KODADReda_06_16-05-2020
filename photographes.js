@@ -63,7 +63,7 @@ function photographerWork (media) {
       const newDiv = document.createElement('div')
       sum += element.likes
       const workTemplate = `         
-        <div class="photo-box"> 
+        <div class="photo-box" tabindex="1"> 
             <div class="photo" data-id=${element.id}>
                 ${videoOrImage(element.image, element.video, element)}
             </div>   
@@ -72,7 +72,7 @@ function photographerWork (media) {
         element.price
       } €  &nbsp <span class='under-photo-info'>${
         element.likes
-      }</span> <i class="fas fa-heart heartIcon"></i></b></p>
+      }</span> <i class="fas fa-heart heartIcon" tabindex="0"></i></b></p>
             </div>
         </div>
         `
@@ -228,8 +228,8 @@ lightBox.closeLightBox()
 // OUVERTURE DU FORMULAIRE DE CONTACTE -----------
 function showModal (element) {
   document.getElementById('test').addEventListener('click', () => {
-    const formModal = document.getElementById('form-container')
-    formModal.style.display = 'block'
+    document.getElementById('form-container').focus()
+    document.getElementById('form-container').style.display = 'block'
     document.getElementById('test').style.display = 'none'
     const nameOfThePhotographe = document.getElementById(
       'nameOfThePhotopgraphe'
@@ -255,7 +255,7 @@ form.addEventListener('submit', (e) => {
     prenom.value,
     2,
     errorPrenom,
-    'Veuillez entre 2 ou plus de caracteres'
+    'Veuillez entrer 2 caracteres ou plus de '
   )
   const nomOk = validateString(
     nom,

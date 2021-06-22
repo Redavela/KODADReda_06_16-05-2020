@@ -22,7 +22,7 @@ function displayDefault (dataJson) {
     const photographeTemplate =
     `
       <div class="photographerContainer">
-        <a href="photographes.html?id=${photographe.id}">
+        <a href="photographes.html?id=${photographe.id}" aria-label="photo ${photographe.name}">
           <div class="portraitBox">
             <img src="${photographe.portrait}" alt="photo de ${photographe.name}">
           </div>
