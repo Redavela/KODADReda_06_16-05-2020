@@ -228,7 +228,6 @@ lightBox.closeLightBox()
 // OUVERTURE DU FORMULAIRE DE CONTACTE -----------
 function showModal (element) {
   document.getElementById('test').addEventListener('click', () => {
-    document.getElementById('form-container').focus()
     document.getElementById('form-container').style.display = 'block'
     document.getElementById('test').style.display = 'none'
     const nameOfThePhotographe = document.getElementById(
@@ -236,6 +235,7 @@ function showModal (element) {
     )
     const nameTemplate = `${element.name}`
     nameOfThePhotographe.innerHTML = nameTemplate
+    document.getElementById('prenom').focus()
   })
 }
 
