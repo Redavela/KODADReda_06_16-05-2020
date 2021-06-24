@@ -35,7 +35,7 @@ function photographerProfil (JsonData) {
           <p >${element.tags
             .map(
               (tag) =>
-                `<a id="cursorAdd" href="acceuil.html?id=${tag}" class='tags'>#${tag}</a>`
+                `<a id="cursorAdd" href="index.html?id=${tag}" class='tags'>#${tag}</a>`
             )
             .join(' ')}</p>
           <button id="test">Contactez-moi</button>
