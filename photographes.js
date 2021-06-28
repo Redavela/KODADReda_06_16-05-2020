@@ -143,14 +143,13 @@ function incrementLikesOnClick () {
       // add the index of liked item to existingLikes Array everytime we click a photo
       existingLikes.push(index)
     })
-    likeIcon.addEventListener('keypress',(e) =>{
+    likeIcon.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         e.target.click()
+      }
     })
-
-  }
-  )
-  }
+  })
+}
 
 // PARTIE  DROPDOWN ----------------------------------------
 
