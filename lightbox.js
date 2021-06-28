@@ -6,11 +6,18 @@ const LightBox = class {
   }
 
   init () { // création d'un tableau qui s'active au clique sur l'image
-    const getPhotos = Array.from(document.getElementsByClassName('photos'))
-    getPhotos.forEach((photo, index) =>
+    const getPhotos = Array.from(document.getElementsByClassName('photo'))
+    getPhotos.forEach((photo, index) => {
       photo.addEventListener('click', () => {
         this.open(index)
       })
+      photo.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.target.click()
+          console.log(e.target)
+        }
+      }) 
+}
     )
   }
 
@@ -38,8 +45,8 @@ const LightBox = class {
     const photoPlaceHolder = document.getElementById('photoPlaceHolder')
     const lightBoxcontainer = document.getElementById('lightBoxContainer')
     const photoNaneDom = document.getElementById('photoName')
-    let src = this.currentPhotographerPhotos[index]
-    let nameSrc = this.photoName[index]
+    const src = this.currentPhotographerPhotos[index]
+    const nameSrc = this.photoName[index]
     lightBoxcontainer.style.display = 'block'
     this.currentLigthboxIndex = index
 

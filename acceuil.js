@@ -80,8 +80,7 @@ function filterElements (dataJson, tagName) {
 /// ////  Le FILTRE !!!!  //////////
 function addActiveClass (dataJson) {
   const buttons = document.querySelectorAll('.filters_container li')
-  buttons.forEach(btn =>
-  {
+  buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       const active = btn.classList.contains('active')
       buttons.forEach(btn => btn.classList.remove('active'))
@@ -95,18 +94,11 @@ function addActiveClass (dataJson) {
     })
     btn.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
-        const active = btn.classList.contains('active')
-        buttons.forEach(btn => btn.classList.remove('active'))
-        if (!active) {
-          btn.classList.add('active')
-        } else {
-          const photographersDiv = document.getElementById('container')
-          photographersDiv.innerHTML = ''
-          filterElements(dataJson, 'all')
-        }
-    }
+        e.target.click()
+      }
+    })
   })
-  })
+}
 
 function displayPhotographers (dataJson) {
   const buttons = document.querySelectorAll('.filters_container li')

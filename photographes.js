@@ -63,8 +63,8 @@ function photographerWork (media) {
       const newDiv = document.createElement('div')
       sum += element.likes
       const workTemplate = `         
-        <div class="photo-box" tabindex="1"> 
-            <div class="photo" data-id=${element.id}>
+        <div class="photo-box" > 
+            <div class="photo" tabindex="0" data-id=${element.id}>
                 ${videoOrImage(element.image, element.video, element)}
             </div>   
             <div class="text">
@@ -117,7 +117,7 @@ function likesAndPrice (sum, photographerPrice) {
 // INCREMENTATION DES LIKES AU CLIQUE ------------------------
 function incrementLikesOnClick () {
   const heartIcons = Array.from(document.getElementsByClassName('heartIcon')) // multiple heart icons
-  heartIcons.forEach((likeIcon, index) =>
+  heartIcons.forEach((likeIcon, index) => {
     likeIcon.addEventListener('click', () => {
       // if the index of current photo is in the Arrey RETURN the index and stop executin IF NOT run the code block
       if (existingLikes.includes(index)) {
@@ -143,8 +143,14 @@ function incrementLikesOnClick () {
       // add the index of liked item to existingLikes Array everytime we click a photo
       existingLikes.push(index)
     })
+    likeIcon.addEventListener('keypress',(e) =>{
+      if (e.key === 'Enter') {
+        e.target.click()
+    })
+
+  }
   )
-}
+  }
 
 // PARTIE  DROPDOWN ----------------------------------------
 
@@ -292,7 +298,13 @@ document.getElementById('X-button').addEventListener('click', () => {
   formModal.style.display = 'none'
   document.getElementById('test').style.display = 'block'
 })
-
+document.getElementById('form-container').addEventListener('keydown', (e) => {
+  if (e.keyCode === 27) {
+    const formModal = document.getElementById('form-container')
+    formModal.style.display = 'none'
+    document.getElementById('test').style.display = 'block'
+  }
+})
 // VALIDATION DES INPUTS --------------------------------
 function validateString (border, entry, size, errorElt, errorMessage) {
   if (entry.length < size) {
