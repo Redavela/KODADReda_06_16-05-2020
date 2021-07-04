@@ -50,7 +50,8 @@ function redirecting (dataJson) {
   }
 };
 
-/// /// Boucle lorsqu'on clique sur le photographe  on est rediriger sur une seul page html //////
+/// ////  Le FILTRE !!!!  //////////
+/// /// Boucle pour afficher les éléments  //////
 function filterElements (dataJson, tagName) {
   dataJson.photographers.forEach(photographe => {
     if (tagName == 'all' || photographe.tags.indexOf(tagName.id || tagName) != -1) {
@@ -77,7 +78,7 @@ function filterElements (dataJson, tagName) {
   })
 };
 
-/// ////  Le FILTRE !!!!  //////////
+// Lorsque l'on clique sur un tag les éléments sont afficher si ils ont le meme
 function addActiveClass (dataJson) {
   const buttons = document.querySelectorAll('.filters_container li')
   buttons.forEach(btn => {
@@ -119,6 +120,7 @@ function filterPhotographs (dataJson) {
   })
 };
 
+// Remise à zéro du site quand on clique sur le titre
 const reset = document.getElementById('reset')
 
 reset.addEventListener('click', () => {

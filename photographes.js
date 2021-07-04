@@ -47,8 +47,8 @@ function photographerProfil (JsonData) {
     newDiv.innerHTML = profilTemplate
     domDiv.appendChild(newDiv)
     showModal(element) // La fonction du formulaire est appelée ici -----
-    const sum = photographerWork(JsonData.media) // La fonction est appelée ici --
-    likesAndPrice(sum, photographerPrice) // La fonction est appelée ici --
+    const sum = photographerWork(JsonData.media)
+    likesAndPrice(sum, photographerPrice) // La fonction  des coeurs est appelée ici --
   })
 }
 
@@ -116,10 +116,9 @@ function likesAndPrice (sum, photographerPrice) {
 
 // INCREMENTATION DES LIKES AU CLIQUE ------------------------
 function incrementLikesOnClick () {
-  const heartIcons = Array.from(document.getElementsByClassName('heartIcon')) // multiple heart icons
+  const heartIcons = Array.from(document.getElementsByClassName('heartIcon')) 
   heartIcons.forEach((likeIcon, index) => {
     likeIcon.addEventListener('click', () => {
-      // if the index of current photo is in the Arrey RETURN the index and stop executin IF NOT run the code block
       if (existingLikes.includes(index)) {
         return
       } else {
@@ -128,12 +127,12 @@ function incrementLikesOnClick () {
         const totalLikesDivBox = document.getElementById('likesBox')
         likeIcon.classList.add('activeRed')
 
-        const likesAfterAddition = likesTable[index] + 1 // add 1 like to the individual current photo
-        likesTable.splice(index, 1, likesAfterAddition) // replace the old value from the Array with the new value
+        const likesAfterAddition = likesTable[index] + 1 // ajoute 1 like à la photo
+        likesTable.splice(index, 1, likesAfterAddition) // remplace l'ancienne valeur par la nouvelle sur le nouveau tableau
 
         const globalNumberOfLikes = likesTable.reduce(function (a, b) {
           return a + b
-        }) // return the sum of the array
+        }) // retourne la somme du tableau
 
         individualLikeBox[
           index

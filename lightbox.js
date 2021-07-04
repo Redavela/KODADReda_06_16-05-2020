@@ -52,27 +52,30 @@ const LightBox = class {
 
     photoPlaceHolder.innerHTML = this.generateHtml(src)
     photoNaneDom.innerHTML = `${nameSrc}`
-
+    // fonction pour utiliser les touches du clavier
     document.onkeydown = (e) => {
       switch (e.keyCode) {
-        case 27:
+        case 27: // echappe
           const closeLightBoxBtn = document.querySelector('.closeIcon')
           closeLightBoxBtn.click()
-        case 37: // left
+
+        case 37: // gauche
           this.prevPic()
           break
 
-        case 39: // right
+        case 39: // droite
           this.nextPic()
           break
 
         default:
-          return // exit this handler for other keys
+          return // bloque le gestionnaire des autres touches
       }
-      e.preventDefault() // bloque l'action par defaut (scroll / move caret)
+      e.preventDefault() // bloque l'action par defaut (scroll)
     }
   }
 
+
+  // fonction pour voir la photo precedente
   prevPic () {
     const photoPlaceHolder = document.getElementById('photoPlaceHolder')
     const photoNaneDom = document.getElementById('photoName')
@@ -90,6 +93,7 @@ const LightBox = class {
     photoNaneDom.innerHTML = `${nameSrc}`
   }
 
+  // fonction pour voir la photo suivante
   nextPic () {
     const photoPlaceHolder = document.getElementById('photoPlaceHolder')
     const photoNaneDom = document.getElementById('photoName')
@@ -107,7 +111,7 @@ const LightBox = class {
     photoNaneDom.innerHTML = `${nameSrc}`
   }
 
-  handleNextPrevButtons () { // fonction pour utiliser les flèches de la lightBox
+  handleNextPrevButtons () { // fonction pour utiliser les flèches de la lightBox avec la souris
     const previousBtn = document.querySelector('.leftIcon')
     const nextBtn = document.querySelector('.rightIcon')
 
