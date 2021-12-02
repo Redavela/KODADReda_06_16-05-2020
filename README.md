@@ -1,4 +1,13 @@
-# KODADReda_06_16-05-2020
+# OPENCLASSROOMS PROJECT 6
 
+Accessible website to display work of freelance photographers.
 
-PROJECT IN HTML CSS and JS Vanilla
+# Languages used:
+
+HTML5
+CSS
+VanillaJS
+
+# Dev Dependencies
+
+Webpack
